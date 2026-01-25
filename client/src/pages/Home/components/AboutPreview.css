@@ -1,0 +1,16 @@
+.about-section {
+  background: black;
+  color: white;
+  padding: 120px 100px;
+}
+
+.about-section h2 {
+  font-size: 36px;
+  margin-bottom: 24px;
+}
+
+.about-section p {
+  max-width: 800px;
+  line-height: 1.7;
+  opacity: 0.9;
+}

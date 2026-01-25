@@ -1,0 +1,174 @@
+.top-hero {
+  background: black;
+  color: white;
+  padding: 28px 80px 0;
+  position: relative;
+}
+
+/* LOGO */
+.logo {
+  font-size: 34px;
+  font-weight: 700;
+  margin-top: -6px;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 14px 0;
+}
+
+/* NAV BAR */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LEFT */
+.top-nav-left {
+  position: relative;
+}
+
+.select-btn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* DROPDOWN */
+.select-menu {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  background: #0b0b0b;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;              /* 🔥 KEY LINE */
+  gap: 10px;                  /* spacing between buttons */
+  z-index: 20;
+  animation: fadeIn 0.2s ease;
+}
+
+.select-menu button {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;        /* 🔥 keeps text in one line */
+  transition: all 0.2s ease;
+}
+
+.select-menu button:hover {
+  background: white;
+  color: black;
+}
+
+
+/* RIGHT NAV */
+.top-nav-right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  font-size: 15px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* HERO IMAGE SECTION */
+.supreme-img {
+  margin-top: 40px;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* IMAGE */
+.supreme-img img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  filter: brightness(0.45);
+}
+
+/* HERO TEXT OVERLAY */
+.supreme-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.2)
+  );
+}
+
+.supreme-img::before {
+  content: "Bridging the Justice Gap\A Connecting citizens and lawyers through clarity, trust, and transparency.";
+  white-space: pre-line;
+  position: absolute;
+  left: 60px;
+  bottom: 240px;
+  z-index: 2;
+  max-width: 520px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===== BRAND HEADER ===== */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: -20px;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logo {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  line-height: 1;
+}

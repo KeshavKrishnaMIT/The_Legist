@@ -1,0 +1,77 @@
+.timeline-box {
+  margin-top: 30px;
+  padding: 24px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.timeline {
+  margin-top: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.dot.done {
+  background: #22c55e; /* GREEN */
+}
+
+.dot.upcoming {
+  background: #facc15; /* YELLOW */
+}
+
+.timeline-content h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.timeline-content .date {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* ADD STAGE FORM */
+.add-stage {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.add-stage h4 {
+  margin-bottom: 12px;
+}
+
+.add-stage select,
+.add-stage input,
+.add-stage textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.add-stage button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+

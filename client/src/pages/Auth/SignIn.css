@@ -1,0 +1,46 @@
+.signin-page {
+  min-height: 100vh;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-page h2 {
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.signin-form {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.signin-form label {
+  font-size: 14px;
+}
+
+.signin-form input {
+  padding: 10px;
+  background: black;
+  border: 1px solid white;
+  color: white;
+}
+
+.signin-form button {
+  margin-top: 20px;
+  padding: 12px;
+  background: white;
+  color: black;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signin-form button:hover {
+  opacity: 0.9;
+}

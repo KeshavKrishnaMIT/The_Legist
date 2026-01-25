@@ -1,0 +1,81 @@
+.new-case-page {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  padding: 80px 100px;
+}
+
+.case-form {
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.case-form input,
+.case-form select,
+.case-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.case-form button {
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.results {
+  margin-top: 60px;
+}
+
+.lawyer-card {
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  max-width: 420px;
+}
+
+.lawyer-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.after-contact {
+  margin-top: 60px;
+  max-width: 900px;
+}
+
+.chat-box {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 20px;
+}
+
+.messages {
+  min-height: 100px;
+  margin-bottom: 12px;
+}
+
+.msg.client {
+  background: rgba(255,255,255,0.08);
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  max-width: 70%;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}

@@ -1,0 +1,52 @@
+.blog-section {
+  background: black;
+  color: white;
+  padding: 120px 80px;
+}
+
+.blog-title {
+  font-size: 36px;
+  margin-bottom: 60px;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.blog-card {
+  display: flex;
+  gap: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 24px;
+}
+
+.blog-card img {
+  width: 260px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.blog-content h3 {
+  margin-bottom: 12px;
+}
+
+.blog-content p {
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.blog-full {
+  margin-top: 14px;
+}
+
+.blog-content button {
+  margin-top: 16px;
+  padding: 8px 18px;
+  background: white;
+  color: black;
+  font-weight: 600;
+  border-radius: 20px;
+}
