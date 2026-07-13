@@ -1,6 +1,13 @@
 import { useState } from "react";
 import "./CaseTimeline.css";
 
+const STAGE_OPTIONS = [
+  "Evidence Submission",
+  "Arguments",
+  "Judgement Reserved",
+  "Case Closed",
+];
+
 export default function CaseTimeline({ isLawyer }) {
   const [stages, setStages] = useState([
     {
@@ -26,8 +33,8 @@ export default function CaseTimeline({ isLawyer }) {
   const addStage = () => {
     if (!stage || !date) return;
 
-    setStages([
-      ...stages,
+    setStages((current) => [
+      ...current,
       {
         id: Date.now(),
         title: stage,
@@ -44,16 +51,30 @@ export default function CaseTimeline({ isLawyer }) {
 
   return (
     <div className="timeline-box">
-      <h3>Case Progress Tracker</h3>
+      <div className="timeline-head">
+        <p className="eyebrow">
+          <span className="eyebrow-dot" />
+          Docket trail
+        </p>
+        <h3>Case Progress Tracker</h3>
+      </div>
 
       <div className="timeline">
-        {stages.map((s) => (
+        {stages.map((s, i) => (
           <div key={s.id} className="timeline-item">
-            <span className={`dot ${s.status}`} />
-            <div>
-              <h4>{s.title}</h4>
+            <span className="timeline-rail">
+              <span className={`dot ${s.status}`} />
+              {i < stages.length - 1 && <span className="timeline-connector" />}
+            </span>
+            <div className="timeline-content">
+              <div className="timeline-content-head">
+                <h4>{s.title}</h4>
+                <span className={`status-chip ${s.status}`}>
+                  {s.status === "done" ? "Completed" : "Upcoming"}
+                </span>
+              </div>
               <span className="date">{s.date}</span>
-              <p>{s.note}</p>
+              {s.note && <p>{s.note}</p>}
             </div>
           </div>
         ))}
@@ -63,24 +84,32 @@ export default function CaseTimeline({ isLawyer }) {
         <div className="add-stage">
           <h4>Add Legal Milestone</h4>
 
-          <select value={stage} onChange={(e) => setStage(e.target.value)}>
-            <option value="">Select stage</option>
-            <option>Evidence Submission</option>
-            <option>Arguments</option>
-            <option>Judgement Reserved</option>
-            <option>Case Closed</option>
-          </select>
+          <div className="add-stage-grid">
+            <select value={stage} onChange={(e) => setStage(e.target.value)}>
+              <option value="">Select stage</option>
+              {STAGE_OPTIONS.map((opt) => (
+                <option key={opt}>{opt}</option>
+              ))}
+            </select>
 
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+
           <textarea
             placeholder="Notes (optional)"
             value={note}
             onChange={(e) => setNote(e.target.value)}
           />
-          <button onClick={addStage}>Add Stage</button>
+
+          <button className="btn btn-outline add-stage-btn" onClick={addStage}>
+            Add Stage
+          </button>
         </div>
       )}
     </div>
   );
 }
-

@@ -1,0 +1,17 @@
+.search-panel {
+  position: relative;
+}
+
+.search-panel::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px dashed rgba(201, 162, 75, 0.16);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.search-form {
+  position: relative;
+  z-index: 1;
+}

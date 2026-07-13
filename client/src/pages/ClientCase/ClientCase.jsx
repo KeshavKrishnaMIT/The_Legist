@@ -1,127 +1,121 @@
 import { useState } from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import Reveal from "../../components/Reveal/Reveal";
 import CaseTimeline from "../../components/CaseTimeline/CaseTimeline";
+import { mockCase } from "../../data/mockCase";
+import "../Client/NewCase.css";
+
+const caseDetails = {
+  ...mockCase,
+  type: "Civil",
+  status: "In Progress",
+  fee: "Rs. 1,500 consultation",
+  nextHearing: "12 Feb 2026",
+  court: "Patna District Court",
+  lawyerGraduation: "NLSIU Bangalore",
+};
 
 export default function ClientCase() {
   const [messages, setMessages] = useState([
-    { sender: "lawyer", text: "Hello, I’ve reviewed your documents." },
-    { sender: "client", text: "Thanks, what are the next steps?" },
+    { sender: "advocate", text: "Hello, I have reviewed your documents and prepared the first hearing note." },
+    { sender: "client", text: "Thank you. Please let me know if any additional records are needed." },
   ]);
-
   const [input, setInput] = useState("");
 
   const sendMessage = () => {
     if (!input.trim()) return;
-
-    setMessages([...messages, { sender: "client", text: input }]);
+    setMessages((current) => [...current, { sender: "client", text: input.trim() }]);
     setInput("");
   };
 
   return (
-    <div
-      style={{
-        padding: "100px",
-        color: "white",
-        background: "black",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>My Case</h1>
+    <div className="client-case-page">
+      <Navbar />
 
-      {/* CASE SUMMARY */}
-      <div
-        style={{
-          marginTop: "30px",
-          padding: "24px",
-          border: "1px solid rgba(255,255,255,0.15)",
-          borderRadius: "12px",
-          maxWidth: "800px",
-        }}
-      >
-        <h2>Property Dispute</h2>
+      <main className="client-case-main">
+        <section className="client-case-hero">
+          <div className="container client-case-grid">
+            <Reveal className="client-case-copy">
+              <p className="eyebrow">
+                <span className="eyebrow-dot" />
+                Client case room
+              </p>
+              <h1>{caseDetails.title}</h1>
+              <p>{caseDetails.description}</p>
+            </Reveal>
 
-        <p style={{ opacity: 0.9 }}>
-          Ownership dispute related to ancestral land in Patna.
-        </p>
+            <Reveal delay={120} className="case-summary-card">
+              <dl className="case-summary-list">
+                <div>
+                  <dt>Status</dt>
+                  <dd>{caseDetails.status}</dd>
+                </div>
+                <div>
+                  <dt>Lawyer</dt>
+                  <dd>{caseDetails.lawyer}</dd>
+                </div>
+                <div>
+                  <dt>Court</dt>
+                  <dd>{caseDetails.court}</dd>
+                </div>
+                <div>
+                  <dt>Next hearing</dt>
+                  <dd>{caseDetails.nextHearing}</dd>
+                </div>
+                <div>
+                  <dt>Fee</dt>
+                  <dd>{caseDetails.fee}</dd>
+                </div>
+              </dl>
+              <button className="btn btn-outline">View submitted document</button>
+            </Reveal>
+          </div>
+        </section>
 
-        <div style={{ marginTop: "16px", lineHeight: "1.8" }}>
-          <p><b>Lawyer:</b> Adv. Rohan Malhotra</p>
-          <p><b>Graduation:</b> NLSIU Bangalore</p>
-          <p><b>Consultation Fee:</b> ₹1,500</p>
-          <p><b>Status:</b> In Progress</p>
-          <p><b>Location:</b> Patna</p>
-          <p>
-            <b>Submitted Document:</b>{" "}
-            <span style={{ textDecoration: "underline", cursor: "pointer" }}>
-              Property_Documents.pdf
-            </span>
-          </p>
-        </div>
-      </div>
+        <section className="client-case-body">
+          <div className="container client-case-body-grid">
+            <Reveal className="case-progress-panel">
+              <div className="workspace-head">
+                <p className="eyebrow">
+                  <span className="eyebrow-dot" />
+                  Case progress
+                </p>
+                <h2>Timeline and hearing updates</h2>
+              </div>
+              <CaseTimeline isLawyer={false} />
+            </Reveal>
 
-      {/* CASE PROGRESS */}
-      <div style={{ marginTop: "50px", maxWidth: "900px" }}>
-        <h2>Case Progress</h2>
-        <p style={{ opacity: 0.7, marginBottom: "20px" }}>
-          Track legal milestones and hearing updates shared by your lawyer.
-        </p>
+            <Reveal delay={120} className="case-chat-panel">
+              <h2>Chat with {caseDetails.lawyer}</h2>
+              <p className="chat-sub">
+                Messages stay attached to the case for transparent coordination.
+              </p>
 
-        <CaseTimeline isLawyer={false} />
-      </div>
+              <div className="messages" aria-live="polite">
+                {messages.map((msg, index) => (
+                  <div className={`msg ${msg.sender}`} key={`${msg.sender}-${index}`}>
+                    {msg.text}
+                  </div>
+                ))}
+              </div>
 
-      {/* CHAT SECTION */}
-      <div style={{ marginTop: "50px", maxWidth: "900px" }}>
-        <h2>Chat with Adv. Rohan Malhotra</h2>
-
-        <div
-          style={{
-            marginTop: "20px",
-            padding: "16px",
-            border: "1px solid rgba(255,255,255,0.15)",
-            borderRadius: "10px",
-            minHeight: "150px",
-          }}
-        >
-          {messages.map((msg, i) => (
-            <div
-              key={i}
-              style={{
-                marginBottom: "10px",
-                textAlign: msg.sender === "client" ? "right" : "left",
-                opacity: 0.9,
-              }}
-            >
-              <span>
-                <b>{msg.sender === "client" ? "You" : "Lawyer"}:</b>{" "}
-                {msg.text}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ display: "flex", marginTop: "15px", gap: "10px" }}>
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type a message..."
-            style={{
-              flex: 1,
-              padding: "10px",
-              borderRadius: "6px",
-              border: "none",
-            }}
-          />
-          <button
-            onClick={sendMessage}
-            style={{
-              padding: "10px 20px",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            Send
-          </button>
-        </div>
-      </div>
+              <div className="chat-input">
+                <input
+                  value={input}
+                  onChange={(event) => setInput(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") sendMessage();
+                  }}
+                  placeholder="Type a message..."
+                />
+                <button className="btn btn-brass" onClick={sendMessage}>
+                  Send
+                </button>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
