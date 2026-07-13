@@ -1,5 +1,8 @@
 # Legist
 
+### Live Demo
+**https://keshavkrishnamit.github.io/The_Legist/**
+
 Legist is a legal-tech platform that connects clients with verified lawyers,
 letting clients file a case and track it from filing to resolution, and
 letting lawyers review, accept, and manage incoming case requests.
